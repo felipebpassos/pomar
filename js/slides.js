@@ -2,9 +2,13 @@ const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 const progressBar = document.querySelector('.progress-bar'); // Seleciona a barra de progresso
 const logoImg = document.querySelector('.hero-logo'); // Seleciona a logo
+const sliderContainer = document.querySelector('.slider'); // Container dos slides
 let currentIndex = 0;
 let slideInterval;
 const slideDuration = 10000; // Duração do slide em milissegundos
+
+let startX = 0;
+let isDragging = false;
 
 function updateLogo(index) {
   if (index === 1) { // Slide 2 (Açaí)
@@ -80,3 +84,53 @@ dots.forEach((dot, index) => {
 // Inicializa o primeiro slide como ativo e inicia o auto-slide
 updateSlider(currentIndex);
 startAutoSlide();
+
+// Eventos para arrastar (drag)
+sliderContainer.addEventListener('mousedown', (e) => {
+  startX = e.clientX;
+  isDragging = true;
+});
+
+sliderContainer.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const deltaX = e.clientX - startX;
+
+  if (deltaX > 60) { // Arrastou para a direita
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+    updateSlider(currentIndex);
+    resetAutoSlide();
+    isDragging = false;
+  } else if (deltaX < -60) { // Arrastou para a esquerda
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+    updateSlider(currentIndex);
+    resetAutoSlide();
+    isDragging = false;
+  }
+});
+
+sliderContainer.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+sliderContainer.addEventListener('mouseleave', () => {
+  isDragging = false;
+});
+
+// Eventos para touch (mobile)
+sliderContainer.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+sliderContainer.addEventListener('touchmove', (e) => {
+  const deltaX = e.touches[0].clientX - startX;
+
+  if (deltaX > 60) { // Arrastou para a direita
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+    updateSlider(currentIndex);
+    resetAutoSlide();
+  } else if (deltaX < -60) { // Arrastou para a esquerda
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+    updateSlider(currentIndex);
+    resetAutoSlide();
+  }
+});

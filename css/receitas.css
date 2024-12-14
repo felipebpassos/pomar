@@ -1,0 +1,105 @@
+#receitas-bg {
+    margin-top: 160px;
+    width: 100%;
+}
+
+section {
+    margin-top: 80px;
+    padding-bottom: 200px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.receitas-grid {
+    display: grid;
+    gap: 30px 16px; /* Espaçamento uniforme entre os cards */
+    padding: 16px; /* Espaçamento interno */
+    grid-template-columns: repeat(3, 1fr); /* 3 cards por linha */
+    width: 100%;
+    margin-bottom: 120px;
+}
+
+.receita-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animação suave */
+    position: relative; /* Para o overlay */
+}
+
+/* Imagem com overlay */
+.receita-imagem-container {
+    position: relative; /* Necessário para o overlay */
+    width: 100%;
+    overflow: hidden;
+}
+
+.receita-imagem {
+    width: 100%;
+    height: auto;
+}
+
+/* Overlay inicial */
+.receita-imagem-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+    z-index: 1;
+    pointer-events: none; /* Não interfere nos cliques */
+    transition: opacity 0.3s ease; /* Transição suave no hover */
+}
+
+/* Título */
+.receita-titulo {
+    margin: 16px 0;
+    font-size: 1.2em;
+    z-index: 2; /* Mantém o texto acima do overlay */
+}
+
+/* Efeito hover */
+.receita-card:hover {
+    transform: translateY(-10px); /* Move o card levemente para cima */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Aumenta o box shadow */
+}
+
+.receita-card:hover .receita-imagem-container::before {
+    opacity: 0; /* Torna o overlay transparente */
+}
+
+
+/* Garantir altura consistente */
+.receita-card {
+    height: 100%;
+}
+
+/* Estilo responsivo para telas menores */
+@media (max-width: 1024px) {
+    .receitas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cards por linha */
+    }
+}
+
+@media (max-width: 768px) {
+    .receitas-grid {
+        grid-template-columns: 1fr;
+        /* 1 card por linha */
+    }
+}

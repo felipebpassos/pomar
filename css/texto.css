@@ -48,6 +48,7 @@ section h2::before {
 }
 
 section p {
+    text-indent: 20px;
     font-size: 1.3rem;
     line-height: 1.6em;
     text-align: justify;
@@ -62,6 +63,7 @@ section p {
     overflow: hidden; 
     cursor: pointer; 
     margin: 80px 0;
+    margin-bottom: 120px;
 }
 
 .video-thumbnail {
@@ -100,4 +102,14 @@ section p {
     height: 100%;
     display: none; 
     z-index: 1; 
+}
+
+.folha {
+    display: block;
+    margin: auto;
+}
+
+.diagrama-producao {
+    display: block;
+    margin: 20px auto;
 }
