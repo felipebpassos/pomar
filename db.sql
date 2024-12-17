@@ -1,10 +1,13 @@
+-- Deleta o banco de dados existente (se existir)
+DROP DATABASE IF EXISTS pomar;
+
 CREATE DATABASE IF NOT EXISTS pomar
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_general_ci;
 
 USE pomar;
 
--- Tabela de Produtos
+-- Criação da tabela de Produtos com o campo url_img
 CREATE TABLE produtos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -12,6 +15,7 @@ CREATE TABLE produtos (
     preco_unitario DECIMAL(10, 2) NOT NULL,
     disponivel BOOLEAN DEFAULT TRUE NOT NULL,
     categoria ENUM('Polpas', 'Açaí', 'Sorvetes') NOT NULL,
+    url_img VARCHAR(255), -- Campo para armazenar o URL da imagem
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;

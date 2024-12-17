@@ -47,6 +47,8 @@ html {
 .menu ul {
     list-style: none;
     opacity: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .menu ul li {
@@ -79,7 +81,8 @@ html {
     position: fixed;
     bottom: 40px;
     left: 50%;
-    width: 600px;
+    width: 80%;
+    max-width: 600px;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.2);
     padding: 15px 20px;
@@ -100,7 +103,7 @@ html {
 .cookie-banner a {
     flex: 1;
     margin: 0;
-    font-size: 14px;
+    font-size: 0.9rem;
     color: #fff;
     text-decoration: none;
 }
@@ -144,7 +147,6 @@ html {
     /* Altura total da tela */
     background: #fff;
     z-index: -1;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     transform: translateX(100%);
@@ -192,11 +194,13 @@ html {
 
 section {
     padding-bottom: 300px;
+    overflow: hidden;
 }
 
 .hero {
     position: relative;
     height: 100dvh;
+    min-height: 600px;
     width: 100%;
     overflow: hidden;
     padding: 0;
@@ -371,13 +375,12 @@ header {
 .img-slide-flying {
     position: absolute;
     z-index: 4;
-    height: 70px;
+    height: 75px;
 }
 
 #acai1 {
     top: 30%;
     left: 58%;
-    filter: blur(5px);
 }
 
 #acai2 {
@@ -388,13 +391,11 @@ header {
 #acai3 {
     top: 30%;
     left: 40%;
-    filter: blur(5px);
 }
 
 #avela1 {
     top: 30%;
     left: 58%;
-    filter: blur(5px);
 }
 
 #avela2 {
@@ -419,7 +420,11 @@ header {
 #choco2 {
     top: 30%;
     left: 40%;
-    filter: blur(5px);
+}
+
+.img-slide-flying.fundo {
+    filter: blur(3px);
+    height: 60px;
 }
 
 @keyframes levitarVertical {
@@ -543,7 +548,9 @@ header {
     opacity: 0.8;
 }
 
-#minor {font-size: 90px;}
+.minor {
+    font-size: 90px;
+}
 
 .text-shaddow-heavy {
     text-shadow: rgb(0, 0, 0) 0px 50px 50px !important;
@@ -913,4 +920,345 @@ header {
 
 body.overflow-hidden {
     overflow: hidden;
+}
+
+@media (max-width: 1460px) {
+
+    .slide-content {
+        width: calc(100% - 160px);
+        margin: auto;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    html {
+        font-size: 15px;
+    }
+
+    .hero-logo {
+        width: 140px;
+    }
+
+    .cart-button img {
+        width: 32px;
+    }
+
+    .img-slide-main {
+        left: 54%;
+        height: 480px;
+    }
+
+    .img-mangaba {
+        left: 56%;
+    }
+
+    #acai-slide {
+        left: 58%;
+    }
+
+    #sorvete-slide {
+        left: 58%;
+    }
+
+    .img-slide-flying {
+        height: 55px;
+    }
+
+    .img-slide-flying.fundo {
+        height: 45px;
+    }
+
+    #acai1 {
+        top: 25%;
+    }
+
+    #acai2 {
+        top: 20%;
+    }
+
+    #acai3 {
+        top: 25%;
+    }
+
+    #avela1 {
+        top: 25%;
+        left: 60%;
+    }
+
+    #avela2 {
+        top: 18%;
+    }
+
+    #avela3 {
+        height: 70px;
+        top: 63%;
+        left: 55%;
+    }
+
+    #choco1 {
+        height: 65px;
+        top: 68%;
+        left: 38%;
+    }
+
+    #choco2 {
+        top: 24%;
+    }
+
+    .img-slide-bottom {
+        height: 100px;
+    }
+
+    #acai-bottom {
+        height: 80px;
+    }
+
+    .subtitle h4 {
+        font-size: 26px;
+        line-height: 1.6em;
+    }
+
+    .title h1 {
+        font-size: 85px;
+        line-height: 1.1em;
+    }
+
+    .minor {
+        font-size: 75px;
+    }
+
+    .cta-button {
+        padding: 0px 40px;
+        line-height: 60px;
+        font-size: 16px;
+        border-radius: 50px;
+    }
+
+    .description {
+        font-size: 18px;
+        width: 230px;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    .produtos-txt {
+        margin-right: 30px;
+        font-size: 16px;
+    }
+
+    .hero-logo {
+        width: 120px;
+    }
+
+    .cart-button img {
+        width: 30px;
+    }
+
+    .img-slide-main {
+        height: 430px;
+    }
+
+    .cta-button {
+        padding: 0px 35px;
+        line-height: 60px;
+        font-size: 15px;
+        border-radius: 40px;
+    }
+
+    .description {
+        font-size: 16px;
+        width: 200px;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 50px 50px;
+    }
+
+    .slide-content {
+        width: calc(100% - 100px);
+    }
+
+    .img-slide-main {
+        height: 460px;
+    }
+
+    .img-mangaba {
+        height: 66%;
+        left: 72%;
+    }
+
+    #acai-slide {
+        left: 72%;
+    }
+
+    #sorvete-slide {
+        left: 72%;
+    }
+
+    .slider-footer {
+        left: 60px;
+        right: 60px;
+    }
+
+    .description {
+        display: none;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    html {
+        font-size: 12px;
+    }
+
+    header {
+        padding: 30px;
+    }
+
+    .hero-logo {
+        width: 110px;
+    }
+
+    .cart-container {
+        margin-left: 20px;
+        transform: translateY(4px);
+    }
+
+    .cart-button img {
+        width: 26px;
+    }
+
+    .menu ul li {
+        font-size: 50px;
+    }    
+
+    .slide-content {
+        width: calc(100% - 60px);
+    }
+
+    .img-mangaba {
+        height: 70%;
+        left: 80%;
+    }
+
+    #acai-slide {
+        left: 105%;
+    }
+
+    #sorvete-slide {
+        left: 105%;
+    }
+
+    .img-slide-flying {
+        height: 48px;
+    }
+
+    .img-slide-flying.fundo {
+        height: 42px;
+    }
+
+    #acai1 {
+        top: 28%;
+        left: 45%;
+    }
+
+    #acai2 {
+        top: 22%;
+        left: 66%;
+    }
+
+    #acai3 {
+        height: 35px;
+        top: 28%;
+        left: 85%;
+    }
+
+    #avela1 {
+        top: 28%;
+        left: 85%;
+    }
+
+    #avela2 {
+        top: 22%;
+        left: 66%;
+    }
+
+    #avela3 {
+        height: 60px;
+        top: 63%;
+        left: 90%;
+    }
+
+    #choco1 {
+        height: 55px;
+        top: 65%;
+        left: 55%;
+    }
+
+    #choco2 {
+        top: 28%;
+        left: 45%;
+    }
+
+    .img-slide-bottom {
+        height: 90px;
+    }
+
+    #acai-bottom {
+        height: 65px;
+    }
+
+    .slider-footer {
+        left: 30px;
+        right: 30px;
+        bottom: 30px;
+    }
+
+    .redes {
+        gap: 20px;
+    }
+
+    .produtos-txt {
+        display: none;
+    }
+
+    .subtitle h4 {
+        font-size: 22px;
+        line-height: 1.6em;
+    }
+
+    .title h1 {
+        font-size: 50px;
+        line-height: 1.1em;
+        letter-spacing: -3px;
+    }
+
+    .minor {
+        font-size: 45px;
+    }
+
+    .cta-button {
+        padding: 0px 30px;
+        line-height: 45px;
+        font-size: 13px;
+        border-radius: 25px;
+    }
+
+    .dot-controls {
+        display: none;
+    }
+
 }

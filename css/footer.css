@@ -108,4 +108,17 @@ footer a.icon:hover {
     footer .row {
         text-align: center;
     }
+
+    .footer-bottom .content {
+        display: block;
+        text-align: center;
+    }
+    
+    .footer-bottom nav ul {
+        margin-bottom: 30px;
+    }
+
+    .footer-bottom nav ul li {
+        margin: 0 10px;
+    }
 }

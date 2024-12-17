@@ -1,0 +1,22 @@
+{
+    "name": "felip/pomar",
+    "description": "Projeto de pomar local",
+    "authors": [
+        {
+            "name": "Felipe Passos",
+            "email": "contato@simplifyweb.com.br"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4",
+        "phpmailer/phpmailer": "^6.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    }
+}

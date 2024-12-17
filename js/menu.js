@@ -43,3 +43,40 @@ toggleMenuButton.addEventListener('click', () => {
         toggleMenuButton.innerHTML = barsIconHTML; // Troca de volta para o ícone "bars"
     }
 });
+
+// Adicionar funcionalidade de redirecionamento ao clicar nos spans
+menuSpans.forEach((menuSpan, index) => {
+    menuSpan.addEventListener('click', () => {
+        // URLs correspondentes
+        const urls = [
+            `${BASE_URL}`,                   // Início
+            `${BASE_URL}a-empresa`,            // A Empresa
+            `${BASE_URL}#produtos`,          // Produtos
+            `${BASE_URL}processo-produtivo`, // Fabricação
+            `${BASE_URL}receitas`,           // Receitas
+            `#footer`                        // Contato
+        ];
+
+        // Redirecionar para a URL correspondente
+        const targetURL = urls[index];
+        if (targetURL.startsWith('#')) {
+            // Scroll suave para seções na mesma página
+            document.querySelector(targetURL).scrollIntoView({ behavior: 'smooth' });
+        } else {
+            // Redirecionar para outra página
+            window.location.href = targetURL;
+        }
+
+        // Fechar o menu após o redirecionamento
+        menu.classList.add('invisible');
+        sections.forEach(section => {
+            section.classList.remove('blur');
+        });
+        menuLi.classList.remove('ativo');
+        menuSpans.forEach(menuSpan => {
+            menuSpan.classList.remove('animate');
+        });
+        document.body.classList.remove('overflow-hidden'); // Remove a classe 'overflow-hidden'
+        toggleMenuButton.innerHTML = barsIconHTML; // Troca de volta para o ícone "bars"
+    });
+});

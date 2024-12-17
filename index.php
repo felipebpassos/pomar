@@ -1,3 +1,17 @@
+<?php
+
+require 'Config.php';
+
+// Definir o nome da sessão
+session_name('POMAR');
+
+session_start();
+
+// Salvar o nome da página na variável de sessão
+$_SESSION['page'] = "HOME";
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,7 +20,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="description" content="XXXXXXXXXXXXXXXXXXX">
-  <meta name="keywords" content="pomar, polpa de fruta, sorvete, açaí, cupuaçu, cremoso, barato, comprar, online, fábrica, produção, varejo, atacado, melhor, nordeste, aracaju, sergipe">
+  <meta name="keywords"
+    content="pomar, polpa de fruta, sorvete, açaí, cupuaçu, cremoso, barato, comprar, online, fábrica, produção, varejo, atacado, melhor, nordeste, aracaju, sergipe">
   <meta name="author" content="Desenvolvido por Felipe Barreto Passos | Simplify Web">
   <meta property="og:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
   <meta property="og:description" content="XXXXXXXXXXXXXXXXXX">
@@ -17,7 +32,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
   <meta name="twitter:description" content="XXXXXXXXXXXXXXXXXXXXX">
-  <meta name="twitter:image" content="./img/logo-original.png">  
+  <meta name="twitter:image" content="./img/logo-original.png">
 
   <title>Pomar do Brasil - Polpas de Frutas 100% naturais</title>
   <link rel="icon" href="./img/favicon.ico">
@@ -29,6 +44,11 @@
   <link rel="stylesheet" href="./css/footer.css">
   <script src="./js/slides.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <script>
+    // Passar a BASE_URL para o JavaScript
+    const BASE_URL = "<?php echo BASE_URL; ?>";
+  </script>
 </head>
 
 <body>
@@ -40,25 +60,7 @@
   <div class="progress-bar"></div>
 
   <!-- Cabeçalho -->
-  <header>
-    <div class="justify-between">
-      <a href="">
-        <img src="./img/logo.png" alt="Logo" class="hero-logo">
-      </a>
-      <div class="cart-container">
-        <a href="#" class="cart-button">
-          <img src="./img/cart.png" alt="cart">
-          <span class="cart-count" data-count="0">0</span>
-        </a>
-      </div>
-    </div>
-    <div class="justify-between">
-      <a href="#produtos" class="poppins-regular produtos-txt">PRODUTOS</a>
-      <button class="toggle-menu">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </header>
+  <?php include 'header.php' ?>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -66,7 +68,7 @@
       <!-- Slide 1 -->
       <div class="slide active" id="slide-polpa">
         <img src="./img/bg.jpg" alt="Polpa" class="slide-bg">
-        <img src="./img/mangaba-remove.png" alt="" class="img-mangaba" id="acai-slide">
+        <img src="./img/mangaba-remove.png" alt="" class="img-mangaba" id="pomar-slide">
         <div class="slide-center">
           <div class="slide-content">
             <div class="subtitle">
@@ -74,7 +76,7 @@
             </div>
             <div class="slide-text">
               <div class="title">
-                <h1 class="poppins-extrabold-italic">100%&nbsp;&nbsp;DA<br><span>FRUTA!</span></h1>
+                <h1 class="poppins-black-italic">100%&nbsp;&nbsp;DA<br><span>FRUTA!</span></h1>
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">01</span> / 03</span>
@@ -90,9 +92,9 @@
       <div class="slide" id="slide-acai">
         <img src="./img/slide2-bg.webp" alt="Açaí" class="slide-bg">
         <img src="./img/acai_banana.png" alt="" class="img-slide-main" id="acai-slide">
-        <img src="./img/acai01.png" alt="" class="img-slide-flying levitar-horizontal" id="acai1">
+        <img src="./img/acai01.png" alt="" class="img-slide-flying levitar-horizontal fundo" id="acai1">
         <img src="./img/acai02.png" alt="" class="img-slide-flying levitar-vertical" id="acai2">
-        <img src="./img/acai03.png" alt="" class="img-slide-flying levitar-vertical" id="acai3">
+        <img src="./img/acai03.png" alt="" class="img-slide-flying levitar-vertical fundo" id="acai3">
         <img src="./img/acai-fruta.png" alt="" class="img-slide-bottom" id="acai-bottom">
         <div class="slide-center">
           <div class="slide-content">
@@ -101,7 +103,7 @@
             </div>
             <div class="slide-text">
               <div class="title">
-                <h1 class="poppins-extrabold-italic text-shaddow-heavy">O MAIS<br><span id="minor">CREMOSO!</span></h1>
+                <h1 class="poppins-black-italic text-shaddow-heavy">O MAIS<br><span class="minor">CREMOSO!</span></h1>
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">02</span> / 03</span>
@@ -117,11 +119,11 @@
       <div class="slide" id="slide-sorvete">
         <img src="./img/slide4-bg.webp" alt="Sorvete" class="slide-bg">
         <img src="./img/avelã_removed.png" alt="" class="img-slide-main" id="sorvete-slide">
-        <img src="./img/avela1.png" alt="" class="img-slide-flying levitar-vertical" id="avela1">
+        <img src="./img/avela1.png" alt="" class="img-slide-flying levitar-vertical fundo" id="avela1">
         <img src="./img/avela2.png" alt="" class="img-slide-flying levitar-horizontal" id="avela2">
         <img src="./img/avela1.png" alt="" class="img-slide-flying levitar-vertical" id="avela3">
         <img src="./img/choco1.png" alt="" class="img-slide-flying levitar-vertical" id="choco1">
-        <img src="./img/choco2.png" alt="" class="img-slide-flying levitar-horizontal" id="choco2">
+        <img src="./img/choco2.png" alt="" class="img-slide-flying levitar-horizontal fundo" id="choco2">
         <img src="./img/avelas-removebg.png" alt="" class="img-slide-bottom" id="avela-bottom">
         <div class="slide-center">
           <div class="slide-content">
@@ -130,7 +132,7 @@
             </div>
             <div class="slide-text">
               <div class="title">
-                <h1 class="poppins-extrabold-italic text-shaddow-heavy">LEVEZA E<br><span>SABOR!</span></h1>
+                <h1 class="poppins-black-italic text-shaddow-heavy">LEVEZA<br><span>E SABOR!</span></h1>
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">03</span> / 03</span>
@@ -386,80 +388,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div class="overlay"></div>
-    <div class="container content">
-      <div class="row">
-        <!-- Coluna 40% -->
-        <div class="col-md-5 col-12">
-          <h4>NOSSA SEDE</h4>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.297089872355!2d-37.07142408502005!3d-10.947808692900277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x715433e4eebf687%3A0x847457beedf59476!2sR.%20K%2C%20142%20-%20In%C3%A1cio%20Barbosa%2C%20Aracaju%20-%20SE!5e0!3m2!1sen!2sbr!4v1697048190282!5m2!1sen!2sbr"
-            width="85%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-          <p>Travessa das Margaridas, 142<br>Distrito Industrial de Aracaju<br>Bairro Inácio Barbosa, Aracaju/SE</p>
-        </div>
-
-        <!-- Coluna 60% -->
-        <div class="col-md-7 col-12">
-          <div class="row">
-            <!-- Telefones -->
-            <div class="col-md-6 col-12">
-              <h4>Comprar no Atacado:</h4>
-              <p>
-                79 9 8872-3030<br>
-                79 9 9809-2767
-              </p>
-              <h4>Comprar no varejo:</h4>
-              <p>
-                79 9 8836-1018<br>
-                79 9 9842-7653<br>
-                79 9 8832-3030<br>
-                79 9 8846-2020<br>
-                79 9 9608-0588<br>
-                79 9 9953-9330
-              </p>
-              <h4>Fixo:</h4>
-              <p>79 3249-5550</p>
-            </div>
-
-            <!-- Email e redes sociais -->
-            <div class="col-md-6 col-12">
-              <h4>FALE CONOSCO!</h4>
-              <p><span style="margin-right: 8px;"><i
-                    class="fa-solid fa-envelope"></i></span>contato@pomardobrasil.com.br</p>
-              <p>
-                <a href="https://wa.me/5579988723030?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20mais%20informações!" target="_blank" class="icon"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.instagram.com/pomarpolpasdefrutas/" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=100063656633536" target="_blank" class="icon"><i class="fab fa-facebook"></i></a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-        <div class="content">
-          <nav>
-            <ul>
-              <li><a href="">HOME</a></li>
-              <li><a href="a-empresa/">SOBRE</a></li>
-              <li><a href="#produtos">PRODUTOS</a></li>
-              <li><a href="processo-produtivo/">FABRICAÇÃO</a></li>
-              <li><a href="receitas/">RECEITAS</a></li>
-            </ul>
-          </nav>
-          <div class="footer-copyright">
-            <span>Copyright © 2024 POMAR DO BRASIL | Desenvolvido por <a id="simplify" href="https://SimplifyWeb.com.br"
-                target="_blank">SimplifyWeb</a></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php include 'footer.php' ?>
 
   <div class="cookie-banner" id="cookieBanner">
     <a href="privacy-policy/">
@@ -502,7 +431,7 @@
 
   <!-- JAVASCRIPT BODY -->
   <script src="./js/loading.js"></script>
-  <script src="./js/toggle-menu.js"></script>
+  <script src="./js/menu.js"></script>
   <script src="./js/cart.js"></script>
   <script src="./js/scroll-to-produtos.js"></script>
   <script src="./js/produtos.js"></script>
