@@ -10,6 +10,27 @@ session_start();
 // Salvar o nome da página na variável de sessão
 $_SESSION['page'] = "PRODUCAO";
 
+// Obter o pool de conexões
+$pool = getDatabasePool();
+$conn = $pool->getConnection();
+
+// Buscar os produtos no banco de dados
+$sql = "SELECT id, nome, descricao, categoria, preco_unitario, url_img FROM produtos WHERE disponivel = 1";
+$result = $conn->query($sql);
+
+$produtos = [];
+
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $produtos[] = $row;
+    }
+}
+
+$produtosJson = json_encode($produtos);
+
+// Liberar a conexão de volta para o pool
+$pool->releaseConnection($conn);
+
 ?>
 
 <!DOCTYPE html>
@@ -19,19 +40,19 @@ $_SESSION['page'] = "PRODUCAO";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="XXXXXXXXXXXXXXXXXXX">
+    <meta name="description" content="Os passos dos nossos produtos até chegarem a você.">
     <meta name="keywords"
         content="pomar, polpa de fruta, sorvete, açaí, cupuaçu, cremoso, barato, comprar, online, fábrica, produção, varejo, atacado, melhor, nordeste, aracaju, sergipe">
     <meta name="author" content="Desenvolvido por Felipe Barreto Passos | Simplify Web">
     <meta property="og:title" content="Processo Produtivo - Pomar do Brasil">
-    <meta property="og:description" content="XXXXXXXXXXXXXXXXXX">
+    <meta property="og:description" content="Os passos dos nossos produtos até chegarem a você.">
     <meta property="og:image" content="../img/logo-original.png">
     <meta property="og:url" content="https://www.pomardobrasil.com.br/processo-produtivo">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Pomar do Brasil">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Processo Produtivo - Pomar do Brasil">
-    <meta name="twitter:description" content="XXXXXXXXXXXXXXXXXXXXX">
+    <meta name="twitter:description" content="Os passos dos nossos produtos até chegarem a você.">
     <meta name="twitter:image" content="../img/logo-original.png">
 
     <title>Processo Produtivo - Pomar do Brasil</title>
@@ -48,6 +69,7 @@ $_SESSION['page'] = "PRODUCAO";
     <script>
         // Passar a BASE_URL para o JavaScript
         const BASE_URL = "<?php echo BASE_URL; ?>";
+        const produtos = <?php echo isset($produtosJson) ? $produtosJson : '[]'; ?>;
     </script>
 </head>
 
@@ -106,23 +128,10 @@ $_SESSION['page'] = "PRODUCAO";
     <?php include '../footer.php' ?>
 
     <!-- MENU -->
-    <div class="menu invisible">
-        <button class="close-menu hidden">
-            <svg class="x" viewBox="0 0 12 12" style="height: 20px; width: 20px;">
-                <path stroke="rgb(180, 180, 180)" fill="rgb(180, 180, 180)"
-                    d="M4.674 6L.344 1.05A.5.5 0 0 1 1.05.343L6 4.674l4.95-4.33a.5.5 0 0 1 .707.706L7.326 6l4.33 4.95a.5.5 0 0 1-.706.707L6 7.326l-4.95 4.33a.5.5 0 0 1-.707-.706L4.674 6z">
-                </path>
-            </svg>
-        </button>
-        <ul>
-            <li><span>Início</span></li>
-            <li><span>A Empresa</span></li>
-            <li><span>Produtos</span></li>
-            <li><span>Fabricação</span></li>
-            <li><span>Receitas</span></li>
-            <li><span>Contato</span></li>
-        </ul>
-    </div>
+    <?php include '../menu.php' ?>
+
+    <!-- CARRINHO DE COMPRAS -->
+    <?php include '../cart.php' ?>
 
     <!-- JQUERY-3.6.4 -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
