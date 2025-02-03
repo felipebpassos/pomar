@@ -40,19 +40,22 @@ $pool->releaseConnection($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
+    <meta name="description"
+        content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
     <meta name="keywords"
         content="pomar, polpa de fruta, sorvete, açaí, cupuaçu, cremoso, barato, comprar, online, fábrica, produção, varejo, atacado, melhor, nordeste, aracaju, sergipe">
     <meta name="author" content="Desenvolvido por Felipe Barreto Passos | Simplify Web">
     <meta property="og:title" content="Receitas - Pomar do Brasil">
-    <meta property="og:description" content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
+    <meta property="og:description"
+        content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
     <meta property="og:image" content="../img/logo-original.png">
     <meta property="og:url" content="https://www.pomardobrasil.com.br/receitas">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Pomar do Brasil">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Receitas - Pomar do Brasil">
-    <meta name="twitter:description" content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
+    <meta name="twitter:description"
+        content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
     <meta name="twitter:image" content="../img/logo-original.png">
 
     <title>Receitas - Pomar do Brasil</title>
@@ -71,13 +74,14 @@ $pool->releaseConnection($conn);
         // Passar a BASE_URL para o JavaScript
         const BASE_URL = "<?php echo BASE_URL; ?>";
         const produtos = <?php echo isset($produtosJson) ? $produtosJson : '[]'; ?>;
+        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || {};
     </script>
 </head>
 
 <body>
 
     <!-- Cabeçalho -->
-    <?php include '../header.php' ?>
+    <?php include '../components/header.php' ?>
 
     <img id="receitas-bg" src="../img/receitas-bg.png" alt="Receitas-bg">
 
@@ -163,14 +167,17 @@ $pool->releaseConnection($conn);
         </div>
     </section>
 
+    <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
+    <?php include '../components/floating-cart.php' ?>
+
     <!-- FOOTER -->
-    <?php include '../footer.php' ?>
+    <?php include '../components/footer.php' ?>
 
     <!-- MENU -->
-    <?php include '../menu.php' ?>
+    <?php include '../components/menu.php' ?>
 
     <!-- CARRINHO DE COMPRAS -->
-    <?php include '../cart.php' ?>
+    <?php include '../components/cart.php' ?>
 
     <!-- JQUERY-3.6.4 -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

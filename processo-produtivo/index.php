@@ -70,13 +70,14 @@ $pool->releaseConnection($conn);
         // Passar a BASE_URL para o JavaScript
         const BASE_URL = "<?php echo BASE_URL; ?>";
         const produtos = <?php echo isset($produtosJson) ? $produtosJson : '[]'; ?>;
+        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || {};
     </script>
 </head>
 
 <body>
 
     <!-- Cabeçalho -->
-    <?php include '../header.php' ?>
+    <?php include '../components/header.php' ?>
 
     <section id="producao" class="nunito">
         <div class="container">
@@ -124,14 +125,17 @@ $pool->releaseConnection($conn);
         </div>
     </section>
 
+    <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
+    <?php include '../components/floating-cart.php' ?>
+
     <!-- FOOTER -->
-    <?php include '../footer.php' ?>
+    <?php include '../components/footer.php' ?>
 
     <!-- MENU -->
-    <?php include '../menu.php' ?>
+    <?php include '../components/menu.php' ?>
 
     <!-- CARRINHO DE COMPRAS -->
-    <?php include '../cart.php' ?>
+    <?php include '../components/cart.php' ?>
 
     <!-- JQUERY-3.6.4 -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

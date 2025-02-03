@@ -17,8 +17,8 @@ html {
 }
 
 #loader {
-    width: 300px;
-    height: 80px;
+    width: 280px;
+    height: 70px;
     background: #009736 url("../img/GRUPO_POMAR.png") center no-repeat;
     background-size: contain;
     position: fixed;
@@ -362,6 +362,41 @@ header {
     width: 160px;
 }
 
+.floating-cart {
+    position: fixed;
+    bottom: 20px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #009736;
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.floating-cart img {
+    width: 28px;
+}
+
+.floating-cart .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
 .cart-container {
     position: relative;
     margin-left: 25px;
@@ -378,7 +413,7 @@ header {
     width: 34px;
 }
 
-.cart-count {
+.cart-button .cart-count {
     position: absolute;
     top: -10px;
     right: -12px;
@@ -1003,7 +1038,7 @@ header {
 .show-more-btn-container {
     margin-top: 20px;
     position: absolute;
-    bottom: 280px;
+    bottom: 300px;
     left: 0;
     width: 100%;
     height: 200px;
@@ -1012,7 +1047,7 @@ header {
 
 .show-more-btn {
     position: absolute;
-    bottom: -80px;
+    bottom: -120px;
     left: 50%;
     transform: translateX(-50%);
     background: transparent;
@@ -1249,7 +1284,7 @@ body.overflow-hidden {
 @media (max-width: 500px) {
 
     #loader {
-        width: 200px;
+        width: 250px;
         height: 60px;
     }
 
@@ -1258,7 +1293,7 @@ body.overflow-hidden {
     }
 
     header {
-        padding: 30px;
+        padding: 20px;
     }
 
     .hero-logo {
@@ -1279,7 +1314,7 @@ body.overflow-hidden {
     }
 
     .slide-content {
-        width: calc(100% - 60px);
+        width: calc(100% - 40px);
     }
 
     .img-mangaba {
@@ -1355,8 +1390,8 @@ body.overflow-hidden {
     }
 
     .slider-footer {
-        left: 30px;
-        right: 30px;
+        left: 20px;
+        right: 20px;
         bottom: 30px;
     }
 

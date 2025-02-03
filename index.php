@@ -45,14 +45,16 @@ $pool->releaseConnection($conn);
     content="pomar, polpa de fruta, sorvete, açaí, cupuaçu, cremoso, barato, comprar, online, fábrica, produção, varejo, atacado, melhor, nordeste, aracaju, sergipe">
   <meta name="author" content="Desenvolvido por Felipe Barreto Passos | Simplify Web">
   <meta property="og:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
-  <meta property="og:description" content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
+  <meta property="og:description"
+    content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
   <meta property="og:image" content="./img/logo-original.png">
   <meta property="og:url" content="https://www.pomardobrasil.com.br">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pomar do Brasil">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
-  <meta name="twitter:description" content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
+  <meta name="twitter:description"
+    content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
   <meta name="twitter:image" content="./img/logo-original.png">
 
   <title>Pomar do Brasil - Polpas de Frutas 100% naturais</title>
@@ -70,6 +72,7 @@ $pool->releaseConnection($conn);
     // Passar a BASE_URL para o JavaScript
     const BASE_URL = "<?php echo BASE_URL; ?>";
     const produtos = <?php echo isset($produtosJson) ? $produtosJson : '[]'; ?>;
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || {};
   </script>
 </head>
 
@@ -82,7 +85,7 @@ $pool->releaseConnection($conn);
   <div class="progress-bar"></div>
 
   <!-- Cabeçalho -->
-  <?php include 'header.php' ?>
+  <?php include './components/header.php' ?>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -102,8 +105,8 @@ $pool->releaseConnection($conn);
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">01</span> / 03</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel lectus et ligula tincidunt
-                  luctus. Donec vitae vehicula justo, at vehicula ipsum.</p>
+                <p>Nossas polpas são feitas com frutas cuidadosamente selecionadas, preservando ao
+                  máximo o sabor e os nutrientes para tornar seu dia mais saudável e delicioso.</p>
               </div>
             </div>
             <a href="#produtos"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
@@ -129,8 +132,8 @@ $pool->releaseConnection($conn);
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">02</span> / 03</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel lectus et ligula tincidunt
-                  luctus. Donec vitae vehicula justo, at vehicula ipsum.</p>
+                <p>Descubra a cremosidade única do açaí Pomar, feito para oferecer energia, frescor e um sabor
+                  irresistível em qualquer ocasião.</p>
               </div>
             </div>
             <a href="#produtos"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
@@ -141,11 +144,11 @@ $pool->releaseConnection($conn);
       <div class="slide" id="slide-sorvete">
         <img src="./img/slide4-bg.webp" alt="Sorvete" class="slide-bg">
         <img src="./img/avelã_removed.png" alt="" class="img-slide-main" id="sorvete-slide">
-        <img src="./img/avela1.png" alt="" class="img-slide-flying levitar-vertical fundo" id="avela1">
+        <img src="./img/avela1.png" alt="" class="img-slide-flying levitar-vertical fundo" id="choco2">
         <img src="./img/avela2.png" alt="" class="img-slide-flying levitar-horizontal" id="avela2">
         <img src="./img/avela1.png" alt="" class="img-slide-flying levitar-vertical" id="avela3">
         <img src="./img/choco1.png" alt="" class="img-slide-flying levitar-vertical" id="choco1">
-        <img src="./img/choco2.png" alt="" class="img-slide-flying levitar-horizontal fundo" id="choco2">
+        <img src="./img/choco2.png" alt="" class="img-slide-flying levitar-horizontal fundo" id="avela1">
         <img src="./img/avelas-removebg.png" alt="" class="img-slide-bottom" id="avela-bottom">
         <div class="slide-center">
           <div class="slide-content">
@@ -158,8 +161,8 @@ $pool->releaseConnection($conn);
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">03</span> / 03</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel lectus et ligula tincidunt
-                  luctus. Donec vitae vehicula justo, at vehicula ipsum.</p>
+                <p>Nossos sorvetes combinam leveza, cremosidade e sabores irresistíveis, perfeitos para adoçar e
+                  transformar os seus momentos especiais.</p>
               </div>
             </div>
             <a href="#produtos"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
@@ -245,7 +248,7 @@ $pool->releaseConnection($conn);
     </div>
     <div class="container">
       <div id="produtos-grid" class="produtos-grid">
-        <!-- Exibe os produtos -->  
+        <!-- Exibe os produtos -->
       </div>
     </div>
     <div class="show-more-btn-container">
@@ -253,8 +256,11 @@ $pool->releaseConnection($conn);
     </div>
   </section>
 
+   <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
+   <?php include './components/floating-cart.php' ?>
+
   <!-- FOOTER -->
-  <?php include 'footer.php' ?>
+  <?php include './components/footer.php' ?>
 
   <div class="cookie-banner" id="cookieBanner">
     <a href="privacy-policy/">
@@ -264,10 +270,10 @@ $pool->releaseConnection($conn);
   </div>
 
   <!-- MENU -->
-  <?php include 'menu.php' ?>
+  <?php include './components/menu.php' ?>
 
   <!-- CARRINHO DE COMPRAS -->
-  <?php include 'cart.php' ?>
+  <?php include './components/cart.php' ?>
 
   <!-- JQUERY-3.6.4 -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -275,10 +281,9 @@ $pool->releaseConnection($conn);
   <!-- JAVASCRIPT BODY -->
   <script src="./js/loading.js"></script>
   <script src="./js/menu.js"></script>
+  <script src="./js/mostrar-mais.js"></script>
   <script src="./js/produtos.js"></script>
   <script src="./js/cart.js"></script>
-  <script src="./js/scroll-to-produtos.js"></script>
-  <script src="./js/mostrar-mais.js"></script>
   <script src="./js/cookies.js"></script>
 
 </body>
