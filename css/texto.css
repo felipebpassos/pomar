@@ -133,6 +133,11 @@ section p {
 
 
 @media (max-width: 500px) {
+
+    section {
+        margin-top: 180px;
+    }
+
     .folha {
         transform: scale(0.7);
     }

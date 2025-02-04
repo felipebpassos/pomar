@@ -952,6 +952,58 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.produto-card img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.produto-card h3 {
+    font-size: 1.125rem;
+    margin: 8px 0;
+}
+
+.produto-card p {
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.produto-preco {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.produto-controle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px auto;
+    width: fit-content;
+}
+
+.produto-controle button {
+    background-color: #009736;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.produto-controle button:hover {
+    background-color: #006e27;
+}
+
+.produto-controle span {
+    font-size: 1rem;
+    font-weight: bold;
+    min-width: 24px;
+    text-align: center;
+}
+
 /* Tornar responsivo com media queries */
 @media (max-width: 1024px) {
     .produto-card {
@@ -980,63 +1032,38 @@ header {
         margin: auto;
     }
 
+    /* Altere para 2 cards por linha */
     .produto-card {
-        flex: 1 1 100%;
-        /* Um por linha */
-        max-width: 100%;
+        flex: 1 1 calc(50% - 16px); /* Dois por linha */
+        max-width: calc(50% - 16px); /* 50% menos o gap */
+        min-width: auto; /* Remove a largura mínima fixa */
     }
-}
 
-.produto-card img {
-    max-width: 100%;
-    border-radius: 4px;
-    margin-bottom: 8px;
-}
+    .produto-card img {
+        margin-bottom: 5px;
+    }
+    
+    .produto-card h3 {
+        margin: 5px 0;
+    }
 
-.produto-card h3 {
-    font-size: 18px;
-    margin: 8px 0;
-}
-
-.produto-card p {
-    font-size: 14px;
-    color: #555;
-}
-
-.produto-preco {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 8px 0;
-}
-
-.produto-controle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 12px auto;
-    width: fit-content;
-}
-
-.produto-controle button {
-    background-color: #009736;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.produto-controle button:hover {
-    background-color: #006e27;
-}
-
-.produto-controle span {
-    font-size: 16px;
-    font-weight: bold;
-    min-width: 24px;
-    text-align: center;
+    .produto-card p {
+        margin-bottom: 5px;
+    }
+    
+    .produto-preco {
+        margin: 5px 0;
+    }
+    
+    .produto-controle {
+        gap: 5px;
+        margin: 8px auto;
+    }
+    
+    .produto-controle button {
+        border-radius: 3px;
+        padding: 5px 10px;
+    }
 }
 
 .show-more-btn-container {
@@ -1298,6 +1325,7 @@ body.overflow-hidden {
 
     header {
         padding: 20px;
+        padding-right: 10px;
     }
 
     .hero-logo {
@@ -1327,11 +1355,20 @@ body.overflow-hidden {
     }
 
     .cart-button img {
-        width: 26px;
+        width: 24px;
     }
 
     .menu ul li {
         font-size: 50px;
+    }
+
+    .cookie-banner {
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        width: auto;
+        transform: translateX(0);
+        background: rgba(0, 0, 0, 0.45);
     }
 
     .slide-content {
@@ -1344,19 +1381,21 @@ body.overflow-hidden {
     }
 
     #acai-slide {
-        left: 105%;
+        left: 95%;
+        height: 360px;
     }
 
     #sorvete-slide {
-        left: 105%;
+        left: 95%;
+        height: 360px;
     }
 
     .img-slide-flying {
-        height: 48px;
+        height: 45px;
     }
 
     .img-slide-flying.fundo {
-        height: 42px;
+        height: 40px;
     }
 
     #acai1 {
@@ -1370,7 +1409,7 @@ body.overflow-hidden {
     }
 
     #acai3 {
-        height: 35px;
+        height: 33px;
         top: 28%;
         left: 85%;
     }
@@ -1386,13 +1425,13 @@ body.overflow-hidden {
     }
 
     #avela3 {
-        height: 60px;
+        height: 55px;
         top: 63%;
         left: 90%;
     }
 
     #choco1 {
-        height: 55px;
+        height: 50px;
         top: 65%;
         left: 55%;
     }
@@ -1403,11 +1442,11 @@ body.overflow-hidden {
     }
 
     .img-slide-bottom {
-        height: 90px;
+        height: 80px;
     }
 
     #acai-bottom {
-        height: 65px;
+        height: 60px;
     }
 
     .slider-footer {
@@ -1440,6 +1479,7 @@ body.overflow-hidden {
     }
 
     .cta-button {
+        margin: 30px 0px 0px;
         padding: 0px 30px;
         line-height: 45px;
         font-size: 13px;
@@ -1450,24 +1490,17 @@ body.overflow-hidden {
         display: none;
     }
 
+    .clientes { 
+        padding: 100px 0;
+        padding-top: 150px;
+    }
+
+    .brand-item {
+        margin-bottom: 80px;
+    }
+
     .brand-item img {
-        max-width: 140px;
-    }
-
-}
-
-@media (max-width: 400px) {
-
-    html {
-        font-size: 11px;
-    }
-
-}
-
-@media (max-width: 380px) {
-
-    html {
-        font-size: 10px;
+        max-width: 130px;
     }
 
 }

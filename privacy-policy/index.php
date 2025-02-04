@@ -46,14 +46,14 @@ $pool->releaseConnection($conn);
     <meta name="author" content="Desenvolvido por Felipe Barreto Passos | Simplify Web">
     <meta property="og:title" content="Privacy Policy - Pomar do Brasil">
     <meta property="og:description" content="Compromisso de proteger a privacidade dos usuários.">
-    <meta property="og:image" content="../img/logo-original.png">
+    <meta property="og:image" content="../img/capa.png">
     <meta property="og:url" content="https://www.pomardobrasil.com.br/privacy-policy">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Pomar do Brasil">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Privacy Policy - Pomar do Brasil">
     <meta name="twitter:description" content="Compromisso de proteger a privacidade dos usuários.">
-    <meta name="twitter:image" content="../img/logo-original.png">
+    <meta name="twitter:image" content="../img/capa.png">
 
     <title>Privacy Policy - Pomar do Brasil</title>
     <link rel="icon" href="../img/favicon.ico">
@@ -146,9 +146,6 @@ $pool->releaseConnection($conn);
     <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
     <?php include '../components/floating-cart.php' ?>
 
-    <!-- FOOTER -->
-    <?php include '../components/cookies-modal.php' ?>
-
     <!-- MENU -->
     <?php include '../components/menu.php' ?>
 
@@ -161,7 +158,6 @@ $pool->releaseConnection($conn);
     <!-- JAVASCRIPT BODY -->
     <script src="../js/menu.js"></script>
     <script src="../js/cart.js"></script>
-    <script src="../js/cookies.js"></script>
 
 </body>
 

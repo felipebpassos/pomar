@@ -46,14 +46,14 @@ $pool->releaseConnection($conn);
   <meta name="author" content="Desenvolvido por Felipe Barreto Passos | Simplify Web">
   <meta property="og:title" content="A Empresa - Pomar do Brasil">
   <meta property="og:description" content="Conheça nossa história, evolução e o nosso presente.">
-  <meta property="og:image" content="../img/logo-original.png">
+  <meta property="og:image" content="../img/capa.png">
   <meta property="og:url" content="https://www.pomardobrasil.com.br/a-empresa">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pomar do Brasil">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="A Empresa - Pomar do Brasil">
   <meta name="twitter:description" content="Conheça nossa história, evolução e o nosso presente.">
-  <meta name="twitter:image" content="../img/logo-original.png">
+  <meta name="twitter:image" content="../img/capa.png">
 
   <title>A Empresa - Pomar do Brasil</title>
   <link rel="icon" href="../img/favicon.ico">
@@ -157,7 +157,7 @@ $pool->releaseConnection($conn);
   <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
   <?php include '../components/floating-cart.php' ?>
 
-  <!-- FOOTER -->
+  <!-- MODAL COOKIES -->
   <?php include '../components/cookies-modal.php' ?>
 
   <!-- MENU -->

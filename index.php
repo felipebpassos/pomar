@@ -47,7 +47,7 @@ $pool->releaseConnection($conn);
   <meta property="og:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
   <meta property="og:description"
     content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
-  <meta property="og:image" content="./img/logo-original.png">
+  <meta property="og:image" content="./img/capa.png">
   <meta property="og:url" content="https://www.pomardobrasil.com.br">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pomar do Brasil">
@@ -55,7 +55,7 @@ $pool->releaseConnection($conn);
   <meta name="twitter:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
   <meta name="twitter:description"
     content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
-  <meta name="twitter:image" content="./img/logo-original.png">
+  <meta name="twitter:image" content="./img/capa.png">
 
   <title>Pomar do Brasil - Polpas de Frutas 100% naturais</title>
   <link rel="icon" href="./img/favicon.ico">
@@ -215,8 +215,6 @@ $pool->releaseConnection($conn);
         <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
           <img src="./img/brands/bompreco.png" alt="Bompreço">
         </div>
-      </div>
-      <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
           <img src="./img/brands/paodeacucar.png" alt="Pão de Açúcar">
         </div>
@@ -262,7 +260,7 @@ $pool->releaseConnection($conn);
   <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
   <?php include './components/floating-cart.php' ?>
 
-  <!-- FOOTER -->
+  <!-- MODAL COOKIES -->
   <?php include './components/cookies-modal.php' ?>
 
   <!-- MENU -->

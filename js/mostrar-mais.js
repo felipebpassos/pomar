@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if ((larguraTela > 768 && produtos > 8) ||
             (larguraTela <= 768 && larguraTela > 450 && produtos > 4) ||
-            (larguraTela <= 450 && produtos > 2)) {
+            (larguraTela <= 450 && produtos > 6)) {
             botaoContainer.style.display = "block";
         } else {
             botaoContainer.style.display = "none";

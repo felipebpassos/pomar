@@ -81,9 +81,11 @@ dots.forEach((dot, index) => {
   });
 });
 
-// Inicializa o primeiro slide como ativo e inicia o auto-slide
-updateSlider(currentIndex);
-startAutoSlide();
+// Adicione esta variável no início do script
+let lastSlideTime = 0;
+const SLIDE_COOLDOWN = 500; // 500ms de intervalo entre os slides
+
+// Modifique os eventos de mouse e touch assim:
 
 // Eventos para arrastar (drag)
 sliderContainer.addEventListener('mousedown', (e) => {
@@ -94,26 +96,21 @@ sliderContainer.addEventListener('mousedown', (e) => {
 sliderContainer.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
   const deltaX = e.clientX - startX;
+  const now = Date.now();
 
-  if (deltaX > 60) { // Arrastou para a direita
+  if (deltaX > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
     updateSlider(currentIndex);
     resetAutoSlide();
     isDragging = false;
-  } else if (deltaX < -60) { // Arrastou para a esquerda
+    lastSlideTime = Date.now();
+  } else if (deltaX < -60 && now - lastSlideTime > SLIDE_COOLDOWN) {
     currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
     updateSlider(currentIndex);
     resetAutoSlide();
     isDragging = false;
+    lastSlideTime = Date.now();
   }
-});
-
-sliderContainer.addEventListener('mouseup', () => {
-  isDragging = false;
-});
-
-sliderContainer.addEventListener('mouseleave', () => {
-  isDragging = false;
 });
 
 // Eventos para touch (mobile)
@@ -123,14 +120,17 @@ sliderContainer.addEventListener('touchstart', (e) => {
 
 sliderContainer.addEventListener('touchmove', (e) => {
   const deltaX = e.touches[0].clientX - startX;
+  const now = Date.now();
 
-  if (deltaX > 60) { // Arrastou para a direita
+  if (deltaX > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
     updateSlider(currentIndex);
     resetAutoSlide();
-  } else if (deltaX < -60) { // Arrastou para a esquerda
+    lastSlideTime = Date.now();
+  } else if (deltaX < -60 && now - lastSlideTime > SLIDE_COOLDOWN) {
     currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
     updateSlider(currentIndex);
     resetAutoSlide();
+    lastSlideTime = Date.now();
   }
 });
