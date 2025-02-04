@@ -70,7 +70,7 @@
             </ul>
           </nav>
           <div class="footer-copyright">
-            <span>Copyright © 2024 POMAR DO BRASIL | Desenvolvido por <a id="simplify" href="https://SimplifyWeb.com.br"
+            <span>Copyright © 2024 POMAR DO BRASIL | Desenvolvido por <a id="simplify" href="https://felipepassos.dev"
                 target="_blank">SimplifyWeb</a></span>
           </div>
         </div>

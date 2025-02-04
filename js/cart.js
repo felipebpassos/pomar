@@ -147,7 +147,7 @@ function removerProduto(produtoId) {
 }
 
 checkoutButton.addEventListener('click', () => {
-  const numeroWhatsApp = '5579996010545'; // Substitua pelo número desejado com DDD
+  const numeroWhatsApp = '5579988723030';
   const produtosNoCarrinho = Object.keys(carrinho);
 
   if (produtosNoCarrinho.length === 0) {
@@ -156,18 +156,13 @@ checkoutButton.addEventListener('click', () => {
   }
 
   let mensagem = 'Olá, gostaria de finalizar meu pedido:%0A%0A'; // Mensagem inicial
-  let total = 0;
 
   produtosNoCarrinho.forEach(produtoId => {
     const produtoInfo = produtos.find(p => p.id === produtoId);
     const quantidade = carrinho[produtoId];
-    const subtotal = produtoInfo.preco_unitario * quantidade;
-    total += subtotal;
 
-    mensagem += `- ${produtoInfo.nome} (${produtoInfo.descricao}): ${quantidade} x R$ ${Number(produtoInfo.preco_unitario).toFixed(2).replace('.', ',')} = R$ ${Number(subtotal).toFixed(2).replace('.', ',')}%0A`;
+    mensagem += `- ${produtoInfo.nome} (${produtoInfo.descricao}): ${quantidade} unidade(s)%0A%0A`;
   });
-
-  mensagem += `%0ATotal: R$ ${Number(total).toFixed(2).replace('.', ',')}`;
 
   const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
   window.open(urlWhatsApp, '_blank');

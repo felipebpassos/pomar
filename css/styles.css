@@ -369,17 +369,18 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #009736;
+    background-color: rgba(0, 0, 0, 0.45);
     height: 55px;
     width: 55px;
     border-radius: 50%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     z-index: 1000;
 }
 
 .floating-cart img {
     width: 28px;
+    transform: translateX(-1px);
 }
 
 .floating-cart .cart-count {
@@ -507,6 +508,9 @@ header {
     position: absolute;
     top: 0;
     left: 0;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .img-slide-main {
@@ -522,7 +526,7 @@ header {
     position: absolute;
     z-index: 5;
     top: 0;
-    left: 52%;
+    left: 54%;
     transform: translateX(-50%);
     height: 70%;
 }
@@ -1300,6 +1304,23 @@ body.overflow-hidden {
         width: 110px;
     }
 
+    .floating-cart {
+        left: 20px;
+        height: 50px;
+        width: 50px;
+    }
+    
+    .floating-cart img {
+        width: 24px;
+        transform: translateX(-1px);
+    }
+    
+    .floating-cart .cart-count {
+        width: 18px;
+        height: 18px;
+        font-size: 11px;
+    }
+
     .cart-container {
         margin-left: 20px;
         transform: translateY(4px);
@@ -1319,7 +1340,7 @@ body.overflow-hidden {
 
     .img-mangaba {
         height: 70%;
-        left: 80%;
+        left: 86%;
     }
 
     #acai-slide {
@@ -1392,7 +1413,7 @@ body.overflow-hidden {
     .slider-footer {
         left: 20px;
         right: 20px;
-        bottom: 30px;
+        bottom: 20px;
     }
 
     .redes {
@@ -1427,6 +1448,10 @@ body.overflow-hidden {
 
     .dot-controls {
         display: none;
+    }
+
+    .brand-item img {
+        max-width: 140px;
     }
 
 }

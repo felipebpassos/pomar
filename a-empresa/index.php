@@ -151,11 +151,14 @@ $pool->releaseConnection($conn);
     </div>
   </section>
 
+  <!-- FOOTER -->
+  <?php include '../components/footer.php' ?>
+
   <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
   <?php include '../components/floating-cart.php' ?>
 
   <!-- FOOTER -->
-  <?php include '../components/footer.php' ?>
+  <?php include '../components/cookies-modal.php' ?>
 
   <!-- MENU -->
   <?php include '../components/menu.php' ?>
@@ -170,6 +173,7 @@ $pool->releaseConnection($conn);
   <script src="../js/menu.js"></script>
   <script src="../js/cart.js"></script>
   <script src="../js/videos.js"></script>
+  <script src="../js/cookies.js"></script>
 
 </body>
 

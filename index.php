@@ -92,7 +92,7 @@ $pool->releaseConnection($conn);
     <div class="slider">
       <!-- Slide 1 -->
       <div class="slide active" id="slide-polpa">
-        <img src="./img/bg.jpg" alt="Polpa" class="slide-bg">
+        <img src="./img/bg-polpa.png" alt="Polpa" class="slide-bg">
         <img src="./img/mangaba-remove.png" alt="" class="img-mangaba" id="pomar-slide">
         <div class="slide-center">
           <div class="slide-content">
@@ -101,7 +101,7 @@ $pool->releaseConnection($conn);
             </div>
             <div class="slide-text">
               <div class="title">
-                <h1 class="poppins-black-italic">100%&nbsp;&nbsp;DA<br><span>FRUTA!</span></h1>
+                <h1 class="poppins-black-italic">100%&nbsp;DA<br><span>FRUTA!</span></h1>
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">01</span> / 03</span>
@@ -256,18 +256,14 @@ $pool->releaseConnection($conn);
     </div>
   </section>
 
-   <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
-   <?php include './components/floating-cart.php' ?>
-
   <!-- FOOTER -->
   <?php include './components/footer.php' ?>
 
-  <div class="cookie-banner" id="cookieBanner">
-    <a href="privacy-policy/">
-      Este site utiliza cookies para oferecer a melhor experiência ao usuário.
-    </a>
-    <button class="close-button" onclick="closeCookieBanner()">×</button>
-  </div>
+  <!-- BOTÃO FLUTUANTE DE CARRINHO DE COMPRAS -->
+  <?php include './components/floating-cart.php' ?>
+
+  <!-- FOOTER -->
+  <?php include './components/cookies-modal.php' ?>
 
   <!-- MENU -->
   <?php include './components/menu.php' ?>

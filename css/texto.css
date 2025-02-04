@@ -112,6 +112,7 @@ section p {
 .diagrama-producao {
     display: block;
     margin: 20px auto;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
