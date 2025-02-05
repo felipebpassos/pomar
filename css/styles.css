@@ -1519,6 +1519,10 @@ body.overflow-hidden {
         border-radius: 25px;
     }
 
+    .slider-controls {
+        gap: 10px;
+    }
+
     .dot-controls {
         display: none;
     }
