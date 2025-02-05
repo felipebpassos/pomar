@@ -309,6 +309,14 @@ html {
     /* Cor mais escura no hover */
 }
 
+.delivery-info {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
 .progress-bar {
     position: absolute;
     top: 0;
@@ -1307,7 +1315,7 @@ body.overflow-hidden {
 
 }
 
-@media (max-height: 750px) {
+@media (max-height: 750px) and (min-width: 769px) {
 
     .menu ul li {
         font-size: 50px;
@@ -1689,6 +1697,7 @@ body.overflow-hidden {
 
     .show-more-btn {
         bottom: -50px;
+        font-size: 1.3rem;
     }
 
 }

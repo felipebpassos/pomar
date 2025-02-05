@@ -11,5 +11,6 @@
     <div class="cart-footer">
         <p>Total: R$ 0,00</p>
         <button id="checkout-button"><i class="fab fa-whatsapp"></i> Enviar pedido</button>
+        <p class="delivery-info">Entregas apenas na Grande Aracaju/SE</p>
     </div>
 </div>

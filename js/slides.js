@@ -1,93 +1,95 @@
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
-const progressBar = document.querySelector('.progress-bar'); // Seleciona a barra de progresso
-const logoImg = document.querySelector('.hero-logo'); // Seleciona a logo
-const sliderContainer = document.querySelector('.slider'); // Container dos slides
+const progressBar = document.querySelector('.progress-bar');
+const logoImg = document.querySelector('.hero-logo');
+const sliderContainer = document.querySelector('.slider');
 let currentIndex = 0;
 let slideInterval;
-const slideDuration = 10000; // Duração do slide em milissegundos
+const slideDuration = 6000;
 
 let startX = 0;
 let isDragging = false;
+let isTouchDragging = false;
+let lastSlideTime = 0;
+const SLIDE_COOLDOWN = 500;
 
 function updateLogo(index) {
-  if (index === 1) { // Slide 2 (Açaí)
+  if (index === 1) {
     logoImg.src = './img/logo-acai.png';
-  } else if (index === 2) { // Slide 3 (Sorvete)
+  } else if (index === 2) {
     logoImg.src = './img/logo-sorvete.png';
-  } else { // Slide inicial (Polpa)
+  } else {
     logoImg.src = './img/logo.png';
   }
 }
 
 function updateSlider(index) {
-  slides.forEach((slide, idx) => {
-    slide.classList.toggle('active', idx === index);
-  });
-
-  dots.forEach((dot, idx) => {
-    dot.classList.toggle('active', idx === index);
-  });
-
-  updateLogo(index); // Atualiza a logo com base no slide atual
-  resetProgressBar(); // Reinicia a barra de progresso sempre que o slider muda
+  slides.forEach((slide, idx) => slide.classList.toggle('active', idx === index));
+  dots.forEach((dot, idx) => dot.classList.toggle('active', idx === index));
+  updateLogo(index);
+  resetProgressBar();
 }
 
 function startProgressBar() {
   progressBar.style.transition = `width ${slideDuration}ms linear`;
-  progressBar.style.width = '100%'; // Faz a barra preencher no tempo do slide
+  progressBar.style.width = '100%';
 }
 
 function resetProgressBar() {
   progressBar.style.transition = 'none';
-  progressBar.style.width = '0'; // Reseta a barra
-  setTimeout(startProgressBar, 50); // Pequeno atraso para reiniciar a animação
+  progressBar.style.width = '0';
+  requestAnimationFrame(() => {
+    progressBar.style.transition = `width ${slideDuration}ms linear`;
+    progressBar.style.width = '100%';
+  });
 }
 
-// Função para mudar de slide automaticamente
 function startAutoSlide() {
-  startProgressBar(); // Inicia a barra de progresso
+  resetProgressBar();
   slideInterval = setInterval(() => {
     currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
     updateSlider(currentIndex);
-  }, slideDuration); // Muda de slide a cada 10 segundos
+  }, slideDuration);
 }
 
-// Função para reiniciar o timer ao interagir manualmente
 function resetAutoSlide() {
-  clearInterval(slideInterval); // Para o timer atual
-  startAutoSlide(); // Inicia um novo timer
+  clearInterval(slideInterval);
+  startAutoSlide();
 }
 
-// Eventos para as setas
+// Eventos de transição e inicialização
+progressBar.addEventListener('transitionend', () => {
+  currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+  updateSlider(currentIndex);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateSlider(currentIndex);
+  startAutoSlide();
+});
+
+// Controles manuais
 document.querySelector('.angle-left').addEventListener('click', () => {
   currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
   updateSlider(currentIndex);
-  resetAutoSlide(); // Reinicia o timer
+  resetAutoSlide();
 });
 
 document.querySelector('.angle-right').addEventListener('click', () => {
   currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
   updateSlider(currentIndex);
-  resetAutoSlide(); // Reinicia o timer
+  resetAutoSlide();
 });
 
-// Eventos para os dots
 dots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
     currentIndex = index;
     updateSlider(index);
-    resetAutoSlide(); // Reinicia o timer
+    resetAutoSlide();
   });
 });
 
-// Adicione esta variável no início do script
-let lastSlideTime = 0;
-const SLIDE_COOLDOWN = 500; // 500ms de intervalo entre os slides
-
-// Modifique os eventos de mouse e touch assim:
-
-// Eventos para arrastar (drag)
+// Controle por arraste
 sliderContainer.addEventListener('mousedown', (e) => {
   startX = e.clientX;
   isDragging = true;
@@ -98,14 +100,9 @@ sliderContainer.addEventListener('mousemove', (e) => {
   const deltaX = e.clientX - startX;
   const now = Date.now();
 
-  if (deltaX > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
-    updateSlider(currentIndex);
-    resetAutoSlide();
-    isDragging = false;
-    lastSlideTime = Date.now();
-  } else if (deltaX < -60 && now - lastSlideTime > SLIDE_COOLDOWN) {
-    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+  if (Math.abs(deltaX) > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
+    const direction = deltaX > 0 ? -1 : 1;
+    currentIndex = (currentIndex + direction + slides.length) % slides.length;
     updateSlider(currentIndex);
     resetAutoSlide();
     isDragging = false;
@@ -113,24 +110,33 @@ sliderContainer.addEventListener('mousemove', (e) => {
   }
 });
 
-// Eventos para touch (mobile)
+sliderContainer.addEventListener('mouseup', () => isDragging = false);
+sliderContainer.addEventListener('mouseleave', () => isDragging = false);
+
+// Controle touch
 sliderContainer.addEventListener('touchstart', (e) => {
   startX = e.touches[0].clientX;
+  isTouchDragging = true;
+  e.preventDefault();
 });
 
+sliderContainer.addEventListener('touchend', () => isTouchDragging = false);
+
 sliderContainer.addEventListener('touchmove', (e) => {
+  if (!isTouchDragging) return;
   const deltaX = e.touches[0].clientX - startX;
   const now = Date.now();
+  e.preventDefault();
 
-  if (deltaX > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+  if (Math.abs(deltaX) > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
+    const direction = deltaX > 0 ? -1 : 1;
+    currentIndex = (currentIndex + direction + slides.length) % slides.length;
     updateSlider(currentIndex);
     resetAutoSlide();
-    lastSlideTime = Date.now();
-  } else if (deltaX < -60 && now - lastSlideTime > SLIDE_COOLDOWN) {
-    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
-    updateSlider(currentIndex);
-    resetAutoSlide();
+    isTouchDragging = false;
     lastSlideTime = Date.now();
   }
 });
+
+// Bloqueia arraste de imagens
+sliderContainer.addEventListener('dragstart', (e) => e.preventDefault());
