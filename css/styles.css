@@ -92,7 +92,7 @@ html {
     padding: 15px 20px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: space-between;
     z-index: 9996;
@@ -534,7 +534,7 @@ header {
     transform: translateX(-50%) scale(0.9);
     height: 70%;
     opacity: 0.3;
-    transition: all 0.4s ease;
+    transition: all 0.6s ease;
 }
 
 .img-mangaba.expand {
@@ -719,6 +719,8 @@ header {
     letter-spacing: -5px;
     text-transform: uppercase;
     text-shadow: rgba(0, 0, 0, 0.2) 0px 30px 30px;
+    -webkit-transform: translateZ(0);
+    display: block;
     pointer-events: none;
 }
 
@@ -782,7 +784,7 @@ header {
 }
 
 #ctaPolpa {
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
     opacity: 0;
     transform: translateY(20px);
 }
@@ -1061,15 +1063,18 @@ header {
 
     /* Altere para 2 cards por linha */
     .produto-card {
-        flex: 1 1 calc(50% - 16px); /* Dois por linha */
-        max-width: calc(50% - 16px); /* 50% menos o gap */
-        min-width: auto; /* Remove a largura mínima fixa */
+        flex: 1 1 calc(50% - 16px);
+        /* Dois por linha */
+        max-width: calc(50% - 16px);
+        /* 50% menos o gap */
+        min-width: auto;
+        /* Remove a largura mínima fixa */
     }
 
     .produto-card img {
         margin-bottom: 5px;
     }
-    
+
     .produto-card h3 {
         margin: 5px 0;
     }
@@ -1077,16 +1082,16 @@ header {
     .produto-card p {
         margin-bottom: 5px;
     }
-    
+
     .produto-preco {
         margin: 5px 0;
     }
-    
+
     .produto-controle {
         gap: 5px;
         margin: 8px auto;
     }
-    
+
     .produto-controle button {
         border-radius: 3px;
         padding: 5px 10px;
@@ -1302,6 +1307,148 @@ body.overflow-hidden {
 
 }
 
+@media (max-height: 750px) {
+
+    .menu ul li {
+        font-size: 50px;
+    }
+
+    header {
+        padding: 20px 80px;
+    }
+
+    .hero-logo {
+        width: 140px;
+    }
+
+    .cart-button img {
+        width: 30px;
+    }
+
+    .produtos-txt {
+        font-size: 17px;
+        margin-right: 40px;
+    }
+
+    .toggle-menu {
+        font-size: 1.8rem;
+    }
+
+    .slide-content {
+        width: 1080px;
+        margin: auto;
+        max-width: calc(100% - 160px);
+    }
+
+    .subtitle h4 {
+        font-size: 22px;
+        margin-left: 10px;
+    }
+
+    .title h1 {
+        font-size: 80px;
+    }
+
+    .minor {
+        font-size: 70px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .step {
+        font-size: 16px;
+    }
+
+    .step .stand-out {
+        font-size: 22px;
+    }
+
+    .cta-button {
+        font-size: 16px;
+        border-radius: 40px;
+    }
+
+    .img-slide-main {
+        height: 400px;
+    }
+
+    .img-mangaba {
+        height: 80%;
+    }
+
+    .img-slide-flying {
+        height: 55px;
+    }
+
+    .img-slide-flying.fundo {
+        height: 45px;
+    }
+
+    #acai1 {
+        top: 25%;
+    }
+
+    #acai2 {
+        top: 18%;
+    }
+
+    #acai3 {
+        top: 25%;
+    }
+
+    #avela3 {
+        height: 60px;
+        top: 65%;
+    }
+
+    #choco1 {
+        height: 60px;
+        top: 70%
+    }
+
+    #choco2 {
+        top: 25%;
+    }
+
+    #avela2 {
+        top: 20%;
+    }
+
+    #avela1 {
+        top: 25%;
+    }
+
+    .img-slide-bottom {
+        height: 80px;
+    }
+
+    #acai-bottom {
+        height: 70px;
+    }
+
+    .slider-footer {
+        bottom: 20px;
+        left: 80px;
+        right: 80px;
+    }
+
+    .angle-left, .angle-right {
+        font-size: 1rem;
+    }
+
+    .redes {
+        margin: 10px 0;
+        gap: 20px;
+    }
+
+    .redes a i {
+        font-size: 1.2rem;
+    }
+
+}
+
 @media (max-width: 900px) {
 
     header {
@@ -1369,12 +1516,12 @@ body.overflow-hidden {
         height: 50px;
         width: 50px;
     }
-    
+
     .floating-cart img {
         width: 24px;
         transform: translateX(-1px);
     }
-    
+
     .floating-cart .cart-count {
         width: 18px;
         height: 18px;
@@ -1392,7 +1539,7 @@ body.overflow-hidden {
 
     .menu ul li {
         font-size: 50px;
-        
+
     }
 
     .cookie-banner {
@@ -1527,7 +1674,7 @@ body.overflow-hidden {
         display: none;
     }
 
-    .clientes { 
+    .clientes {
         padding: 100px 0;
         padding-top: 150px;
     }

@@ -34,7 +34,7 @@ require 'Config.php';
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/fonts.css">
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/styles.css?v=2.0">
   <link rel="stylesheet" href="./css/footer.css">
   <script src="./js/slides.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -76,8 +76,7 @@ require 'Config.php';
               </div>
               <div class="description">
                 <span class="step"><span class="stand-out">01</span> / 03</span>
-                <p>Nossas polpas são feitas com frutas cuidadosamente selecionadas, preservando ao
-                  máximo o sabor e os nutrientes para tornar seu dia mais saudável e delicioso.</p>
+                <p>Nossas polpas são feitas com frutas selecionadas, preservando seu sabor e os nutrientes para tornar seu dia mais saudável e delicioso.</p>
               </div>
             </div>
             <a href="#produtos" class="cta" id="ctaPolpa"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
@@ -244,12 +243,12 @@ require 'Config.php';
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
   <!-- JAVASCRIPT BODY -->
-  <script src="./js/loading.js"></script>
-  <script src="./js/menu.js"></script>
-  <script src="./js/mostrar-mais.js"></script>
-  <script src="./js/produtos.js"></script>
-  <script src="./js/cart.js"></script>
-  <script src="./js/cookies.js"></script>
+  <script src="./js/loading.js?v=2.0"></script>
+  <script src="./js/menu.js?v=2.0"></script>
+  <script src="./js/mostrar-mais.js?v=2.0"></script>
+  <script src="./js/produtos.js?v=2.0"></script>
+  <script src="./js/cart.js?v=2.0"></script>
+  <script src="./js/cookies.js?v=2.0"></script>
 
 </body>
 

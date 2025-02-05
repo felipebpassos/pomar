@@ -13,6 +13,10 @@ $dotenv->load();
 // Configurações gerais
 define('BASE_URL', $_ENV['BASE_URL']);
 
+// Credenciais fixas
+$LOGIN_USER = $_ENV['LOGIN_USER'];
+$LOGIN_PASS = $_ENV['LOGIN_PASS'];
+
 // Definir o nome da sessão
 session_name('POMAR');
 
