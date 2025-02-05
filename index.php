@@ -274,6 +274,7 @@ $pool->releaseConnection($conn);
 
   <!-- JAVASCRIPT BODY -->
   <script src="./js/loading.js"></script>
+  <script src="./js/applyExpand.js"></script>
   <script src="./js/menu.js"></script>
   <script src="./js/mostrar-mais.js"></script>
   <script src="./js/produtos.js"></script>

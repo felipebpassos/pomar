@@ -48,7 +48,7 @@ $pool->releaseConnection($conn);
     <meta property="og:title" content="Receitas - Pomar do Brasil">
     <meta property="og:description"
         content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
-    <meta property="og:image" content="../img/capa.png">
+    <meta property="og:image" content="../img/logo-original.png">
     <meta property="og:url" content="https://www.pomardobrasil.com.br/receitas">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Pomar do Brasil">
@@ -56,7 +56,7 @@ $pool->releaseConnection($conn);
     <meta name="twitter:title" content="Receitas - Pomar do Brasil">
     <meta name="twitter:description"
         content="Suco, doces, smothie, drinks? Com Polpas Pomar, você prepara as mais diversas receitas.">
-    <meta name="twitter:image" content="../img/capa.png">
+    <meta name="twitter:image" content="../img/logo-original.png">
 
     <title>Receitas - Pomar do Brasil</title>
     <link rel="icon" href="../img/favicon.ico">

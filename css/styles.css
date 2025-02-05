@@ -1084,6 +1084,7 @@ header {
     background: transparent;
     /* Fade de cima para baixo */
     border: none;
+    text-decoration: underline;
     padding: 20px;
     cursor: pointer;
     color: #555;
@@ -1368,7 +1369,7 @@ body.overflow-hidden {
         right: 20px;
         width: auto;
         transform: translateX(0);
-        background: rgba(0, 0, 0, 0.45);
+        background: rgba(0, 0, 0, 0.4);
     }
 
     .slide-content {
@@ -1501,6 +1502,10 @@ body.overflow-hidden {
 
     .brand-item img {
         max-width: 130px;
+    }
+
+    .show-more-btn {
+        bottom: -50px;
     }
 
 }
