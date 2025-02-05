@@ -89,17 +89,28 @@ dots.forEach((dot, index) => {
   });
 });
 
-// Controle por arraste
+// Controle por arraste (mouse)
 sliderContainer.addEventListener('mousedown', (e) => {
   startX = e.clientX;
+  startY = e.clientY; // Adicionado para rastrear Y
   isDragging = true;
 });
 
 sliderContainer.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
+  
+  // Calcula deltas X e Y
   const deltaX = e.clientX - startX;
+  const deltaY = e.clientY - startY;
   const now = Date.now();
 
+  // Ignora movimentos verticais
+  if (Math.abs(deltaY) > Math.abs(deltaX)) {
+    isDragging = false;
+    return;
+  }
+
+  // Continua apenas para movimentos horizontais
   if (Math.abs(deltaX) > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
     const direction = deltaX > 0 ? -1 : 1;
     currentIndex = (currentIndex + direction + slides.length) % slides.length;
@@ -110,23 +121,31 @@ sliderContainer.addEventListener('mousemove', (e) => {
   }
 });
 
-sliderContainer.addEventListener('mouseup', () => isDragging = false);
-sliderContainer.addEventListener('mouseleave', () => isDragging = false);
-
 // Controle touch
 sliderContainer.addEventListener('touchstart', (e) => {
   startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
   isTouchDragging = true;
-  e.preventDefault();
+  // Removido o preventDefault() aqui
 });
-
-sliderContainer.addEventListener('touchend', () => isTouchDragging = false);
 
 sliderContainer.addEventListener('touchmove', (e) => {
   if (!isTouchDragging) return;
-  const deltaX = e.touches[0].clientX - startX;
+  
+  const currentX = e.touches[0].clientX;
+  const currentY = e.touches[0].clientY;
+  const deltaX = currentX - startX;
+  const deltaY = currentY - startY;
   const now = Date.now();
-  e.preventDefault();
+
+  // Se movimento predominante for vertical
+  if (Math.abs(deltaY) > Math.abs(deltaX)) {
+    isTouchDragging = false; // Libera o arrasto
+    return; // Sai sem prevenir o comportamento padrão
+  }
+
+  // Apenas para movimentos horizontais
+  e.preventDefault(); // Previne scroll horizontal
 
   if (Math.abs(deltaX) > 60 && now - lastSlideTime > SLIDE_COOLDOWN) {
     const direction = deltaX > 0 ? -1 : 1;
