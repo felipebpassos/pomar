@@ -54,7 +54,7 @@ menuSpans.forEach((menuSpan, index) => {
             `${BASE_URL}#produtos`,          // Produtos
             `${BASE_URL}processo-produtivo`, // Fabricação
             `${BASE_URL}receitas`,           // Receitas
-            `#footer`                        // Contato
+            `#contato`                        // Contato
         ];
 
         // Redirecionar para a URL correspondente

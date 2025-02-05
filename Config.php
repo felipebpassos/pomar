@@ -13,6 +13,31 @@ $dotenv->load();
 // Configurações gerais
 define('BASE_URL', $_ENV['BASE_URL']);
 
+// Definir o nome da sessão
+session_name('POMAR');
+
+session_start();
+
+// Obter a URL atual e remover "/pomar/"
+$current_url = str_replace("/pomar", "", $_SERVER['REQUEST_URI']);
+
+// Definir a página com base na URL
+if ($current_url === "/" || $current_url === "/index.php" || $current_url === "/#") {
+    $_SESSION['page'] = "HOME";
+} elseif ($current_url === "/a-empresa/") {
+    $_SESSION['page'] = "EMPRESA";
+} elseif ($current_url === "/processo-produtivo/") {
+    $_SESSION['page'] = "PRODUCAO";
+} elseif ($current_url === "/#produtos" || $current_url === "/index.php#produtos") {
+    $_SESSION['page'] = "PRODUTOS";
+} elseif ($current_url === "/receitas/") {
+    $_SESSION['page'] = "RECEITAS";
+} elseif ($current_url === "/privacy-policy/") {
+    $_SESSION['page'] = "POLITICAS";
+} else {
+    $_SESSION['page'] = "DESCONHECIDO"; // Caso a URL não corresponda a nenhuma das opções
+}
+
 // Pool de conexões para o banco de dados
 class DatabasePool {
     private $pool = [];
@@ -68,3 +93,24 @@ function getDatabasePool() {
 
     return $pool;
 }
+
+// Obter o pool de conexões
+$pool = getDatabasePool();
+$conn = $pool->getConnection();
+
+// Buscar os produtos no banco de dados
+$sql = "SELECT id, nome, descricao, categoria, preco_unitario, url_img FROM produtos WHERE disponivel = 1";
+$result = $conn->query($sql);
+
+$produtos = [];
+
+if ($result && $result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $produtos[] = $row;
+  }
+}
+
+$produtosJson = json_encode($produtos);
+
+// Liberar a conexão de volta para o pool
+$pool->releaseConnection($conn);

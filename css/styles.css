@@ -54,13 +54,17 @@ html {
 .menu ul li {
     display: block;
     font-family: 'Manrope', sans-serif;
-    color: white;
+    color: rgba(255, 255, 255, 0.5);
     font-size: 70px;
     margin-bottom: 0;
     font-weight: 900;
     cursor: pointer;
     overflow: hidden;
     height: fit-content;
+}
+
+.menu ul li.atual {
+    color: #fff;
 }
 
 .menu ul li:hover {
@@ -527,8 +531,15 @@ header {
     z-index: 5;
     top: 0;
     left: 54%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(0.9);
     height: 70%;
+    opacity: 0.3;
+    transition: all 0.4s ease;
+}
+
+.img-mangaba.expand {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
 }
 
 #acai-slide {
@@ -747,24 +758,40 @@ header {
     pointer-events: none;
 }
 
+.cta {
+    display: block;
+}
+
 .cta-button {
     margin: 40px 0px 0px;
     padding: 0px 50px;
     line-height: 60px;
     font-size: 18px;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.01);
     color: #fff;
     border-style: solid;
     border-width: 1px;
     border-color: rgba(255, 255, 255, 0.35);
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease;
 }
 
 .cta-button:hover {
     border-color: rgba(255, 255, 255, 0.733);
 }
+
+#ctaPolpa {
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+#ctaPolpa.expand {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .slider-footer {
     position: absolute;
@@ -1078,7 +1105,7 @@ header {
 
 .show-more-btn {
     position: absolute;
-    bottom: -120px;
+    bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
     background: transparent;
@@ -1311,6 +1338,10 @@ body.overflow-hidden {
         display: none;
     }
 
+    .show-more-btn {
+        bottom: -70px;
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -1361,6 +1392,7 @@ body.overflow-hidden {
 
     .menu ul li {
         font-size: 50px;
+        
     }
 
     .cookie-banner {

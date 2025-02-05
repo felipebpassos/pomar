@@ -2,35 +2,6 @@
 
 require '../Config.php';
 
-// Definir o nome da sessão
-session_name('POMAR');
-
-session_start();
-
-// Salvar o nome da página na variável de sessão
-$_SESSION['page'] = "EMPRESA";
-
-// Obter o pool de conexões
-$pool = getDatabasePool();
-$conn = $pool->getConnection();
-
-// Buscar os produtos no banco de dados
-$sql = "SELECT id, nome, descricao, categoria, preco_unitario, url_img FROM produtos WHERE disponivel = 1";
-$result = $conn->query($sql);
-
-$produtos = [];
-
-if ($result && $result->num_rows > 0) {
-  while ($row = $result->fetch_assoc()) {
-    $produtos[] = $row;
-  }
-}
-
-$produtosJson = json_encode($produtos);
-
-// Liberar a conexão de volta para o pool
-$pool->releaseConnection($conn);
-
 ?>
 
 <!DOCTYPE html>

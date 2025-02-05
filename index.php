@@ -2,35 +2,6 @@
 
 require 'Config.php';
 
-// Definir o nome da sessão
-session_name('POMAR');
-
-session_start();
-
-// Salvar o nome da página na variável de sessão
-$_SESSION['page'] = "HOME";
-
-// Obter o pool de conexões
-$pool = getDatabasePool();
-$conn = $pool->getConnection();
-
-// Buscar os produtos no banco de dados
-$sql = "SELECT id, nome, descricao, categoria, preco_unitario, url_img FROM produtos WHERE disponivel = 1";
-$result = $conn->query($sql);
-
-$produtos = [];
-
-if ($result && $result->num_rows > 0) {
-  while ($row = $result->fetch_assoc()) {
-    $produtos[] = $row;
-  }
-}
-
-$produtosJson = json_encode($produtos);
-
-// Liberar a conexão de volta para o pool
-$pool->releaseConnection($conn);
-
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +18,7 @@ $pool->releaseConnection($conn);
   <meta property="og:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
   <meta property="og:description"
     content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
-  <meta property="og:image" content="./img/capa.png">
+  <meta property="og:image" content="./img/logo-original.png">
   <meta property="og:url" content="https://www.pomardobrasil.com.br">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pomar do Brasil">
@@ -55,7 +26,7 @@ $pool->releaseConnection($conn);
   <meta name="twitter:title" content="Pomar do Brasil - Polpas de Frutas 100% naturais">
   <meta name="twitter:description"
     content="Saudável, prático e com sabor da fruta! Experimente esse sabor no seu dia a dia.">
-  <meta name="twitter:image" content="./img/capa.png">
+  <meta name="twitter:image" content="./img/logo-original.png">
 
   <title>Pomar do Brasil - Polpas de Frutas 100% naturais</title>
   <link rel="icon" href="./img/favicon.ico">
@@ -109,7 +80,7 @@ $pool->releaseConnection($conn);
                   máximo o sabor e os nutrientes para tornar seu dia mais saudável e delicioso.</p>
               </div>
             </div>
-            <a href="#produtos"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
+            <a href="#produtos" class="cta" id="ctaPolpa"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
           </div>
         </div>
       </div>
@@ -136,7 +107,7 @@ $pool->releaseConnection($conn);
                   irresistível em qualquer ocasião.</p>
               </div>
             </div>
-            <a href="#produtos"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
+            <a href="#produtos" class="cta"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
           </div>
         </div>
       </div>
@@ -165,7 +136,7 @@ $pool->releaseConnection($conn);
                   transformar os seus momentos especiais.</p>
               </div>
             </div>
-            <a href="#produtos"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
+            <a href="#produtos" class="cta"><button class="cta-button poppins-extrabold">FAÇA SEU PEDIDO</button></a>
           </div>
         </div>
       </div>
@@ -210,19 +181,19 @@ $pool->releaseConnection($conn);
           <img src="./img/brands/assai.png" alt="Assai">
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
+          <img src="./img/brands/paodeacucar.png" alt="Pão de Açúcar">
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
           <img src="./img/brands/gbarbosa.png" alt="GBarbosa">
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
-          <img src="./img/brands/bompreco.png" alt="Bompreço">
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
-          <img src="./img/brands/paodeacucar.png" alt="Pão de Açúcar">
+          <img src="./img/brands/mercantil.png" alt="Mercantil">
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
           <img src="./img/brands/sams.png" alt="Sams">
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-12 brand-item">
-          <img src="./img/brands/mercantil.png" alt="Mercantil">
+          <img src="./img/brands/bompreco.png" alt="Bompreço">
         </div>
       </div>
     </div>
@@ -274,7 +245,6 @@ $pool->releaseConnection($conn);
 
   <!-- JAVASCRIPT BODY -->
   <script src="./js/loading.js"></script>
-  <script src="./js/applyExpand.js"></script>
   <script src="./js/menu.js"></script>
   <script src="./js/mostrar-mais.js"></script>
   <script src="./js/produtos.js"></script>

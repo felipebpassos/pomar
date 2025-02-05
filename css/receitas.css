@@ -103,3 +103,11 @@ body {
         /* 1 card por linha */
     }
 }
+
+@media (max-width: 500px) {
+
+    #receitas-bg {
+        margin-top: 80px;
+    }
+
+}
